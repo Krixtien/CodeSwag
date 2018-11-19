@@ -1,7 +1,8 @@
-package com.example.nwaka.codeswag
+package com.example.nwaka.codeswag.Controller
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.nwaka.codeswag.R
 
 class MainActivity : AppCompatActivity() {
 
