@@ -1,5 +1,6 @@
 package com.example.nwaka.codeswag.Controller
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import com.example.nwaka.codeswag.Adapters.CategoryRecycleAdapter
 import com.example.nwaka.codeswag.Model.Category
 import com.example.nwaka.codeswag.R
 import com.example.nwaka.codeswag.Services.DataService
+import com.example.nwaka.codeswag.Utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,10 +23,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         adapter = CategoryRecycleAdapter(this, DataService.categories){ category ->
-            println(category.title)
+            val productIntent = Intent(this, ProductsActivity::class.java)
+            productIntent.putExtra(EXTRA_CATEGORY, category.title)
+            startActivity(productIntent)
+
         }
         categoryListView.adapter = adapter
-
         val layoutManager = LinearLayoutManager(this)
         categoryListView.layoutManager = layoutManager
         categoryListView.setHasFixedSize(true)
